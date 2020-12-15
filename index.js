@@ -2,7 +2,14 @@ const endPoint = "http://localhost:3000/api/v1/grades";
 
 document.addEventListener('DOMContentLoaded', () => {
   getGrades()
+
+  const createGradeForm = document.querySelector('#input-container')
+
+ 
+  createGradeForm.addEventListener('submit', (e) => createFormHandler(e))
 })
+
+
 
 function getGrades() {
     fetch(endPoint)
@@ -24,3 +31,16 @@ function getGrades() {
         })
       })
     }
+
+    
+    // in the scope of the Form Handler
+    function createFormHandler(e) {
+        e.preventDefault()
+        const inputClass = document.querySelector('#input-class').value
+        const inputGrade = document.querySelector('#student-grade').value
+        const inputStudent = document.querySelector('#students').value
+        const studentId = parseInt(studentInput)
+        postGrade(inputClass, inputGrade, inputStudent, studentId)
+      }
+
+      function postGrade(name_of_class, student_grade, student_id)
