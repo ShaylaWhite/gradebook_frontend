@@ -10,8 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 })
 
-// get function 
-
+// get function fires off AJax request to the index route
 
 function getGrades() {
     fetch(endPoint)
@@ -32,7 +31,7 @@ function getGrades() {
               <h3>${grade.attributes.name_of_class}</h3>
               <h3>${grade.attributes.student_grade}</h3>
               <p>${grade.attributes.student.name}</p>
-              <button data-id=${grade.id}>edit</button>
+              <button data-id=${grade.id}>delete</button>
             </div>
             <br><br>`;
 
@@ -75,4 +74,11 @@ function getGrades() {
           const gradeMarkup = 
           render(gradeData)
         })
+      }
+
+      // delete function
+
+      function deleteGrade() {
+        let dogId = this
+
       }
