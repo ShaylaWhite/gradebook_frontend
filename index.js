@@ -1,5 +1,7 @@
 const endPoint = "http://localhost:3000/api/v1/grades";
 
+
+//the DOMContent Loads and triggers the fetch request (get) the getGrades function
 document.addEventListener('DOMContentLoaded', () => {
   getGrades()
 
@@ -8,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 })
 
+// get function 
 
 
 function getGrades() {
@@ -16,8 +19,15 @@ function getGrades() {
       .then(grades => {
         // remember our JSON data is a bit nested due to our serializer
         grades.data.forEach(grade => {
-            // double check how your data is nested in the console so you can successfully access the attributes of each individual object
-          const gradeMarkup = `
+          render(grade)
+        })
+      })
+    }
+
+    //reusable function anytime I need to render the json data
+    // function takes in the grade object
+  function render(grade) {
+   const gradeMarkup = `
             <div data-id=${grade.id}>
               <h3>${grade.attributes.name_of_class}</h3>
               <h3>${grade.attributes.student_grade}</h3>
@@ -25,13 +35,14 @@ function getGrades() {
               <button data-id=${grade.id}>edit</button>
             </div>
             <br><br>`;
-  
-            document.querySelector('#grade-container').innerHTML += gradeMarkup
-        })
-      })
-    }
 
-    
+      //manipulation of the DOM
+
+            document.querySelector('#grade-container').innerHTML += gradeMarkup
+  
+  }
+
+
     // in the scope of the Form Handler
     function createFormHandler(e) {
         e.preventDefault()
@@ -40,6 +51,8 @@ function getGrades() {
         const studentId = parseInt(document.querySelector('#students').value)
         postGrade(inputClass, inputGrade, studentId)
       }
+
+      //post function 
 
       function postGrade(name_of_class, student_grade, student_id) {
         // confirm these values are coming through properly
@@ -56,17 +69,10 @@ function getGrades() {
         .then(response => response.json())
         .then(grade => {
           console.log(grade);
+          // taking the grade object we get back from teh fetch request and extracting the data
           const gradeData = grade.data
           // render JSON response
-          const gradeMarkup = `
-          <div data-id=${grade.id}>
-              <h3>${grade.attributes.name_of_class}</h3>
-              <h3>${grade.attributes.student_grade}</h3>
-              <p>${grade.attributes.student.name}</p>
-              <button data-id=${grade.id}>edit</button>
-            </div>
-          <br><br>`;
-      
-          document.querySelector('#grade-container').innerHTML += gradeMarkup;
+          const gradeMarkup = 
+          render(gradeData)
         })
       }
