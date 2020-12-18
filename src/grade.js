@@ -1,5 +1,6 @@
 // grade class
 
+// pulling from the instnace of the indtsnce of teh grde being sent from the back end 
 class Grade {
     constructor(id, GradeAttributes) {
       this.id = id;
