@@ -18,6 +18,9 @@ function getGrades() {
       .then(grades => {
         // remember our JSON data is a bit nested due to our serializer
         grades.data.forEach(grade => {
+
+          //create a new grade object , make a new instance of the grade class
+        let newGrade = new Grade(grade)
           render(grade)
         })
       })
