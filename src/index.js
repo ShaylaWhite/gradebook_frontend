@@ -5,6 +5,9 @@ const endPoint = "http://localhost:3000/api/v1/grades";
 document.addEventListener('DOMContentLoaded', () => {
   getGrades()
 
+  // event listner and handler for create syllabus form
+
+
   const createGradeForm = document.querySelector('#input-container')
   createGradeForm.addEventListener("submit", (e) => createFormHandler(e))
 
@@ -20,29 +23,21 @@ function getGrades() {
         grades.data.forEach(grade => {
 
           //create a new grade object , make a new instance of the grade class
-        let newGrade = new Grade(grade)
-          render(grade)
-        })
+        let newGrade = new Grade(grade, grade.attributes)
+
+        // render90 brings the unconstructed object and creates a instance of that data
+      
+        document.querySelector('#grade-container').innerHTML += gradeMarkup.renderGradeCard()
+
+
+
+      })
       })
     }
 
     //reusable function anytime I need to render the json data
     // function takes in the grade object
-  function render(grade) {
-   const gradeMarkup = `
-            <div data-id=${grade.id}>
-              <h3>${grade.attributes.name_of_class}</h3>
-              <h3>${grade.attributes.student_grade}</h3>
-              <p>${grade.attributes.student.name}</p>
-              <button data-id=${grade.id}>delete</button>
-            </div>
-            <br><br>`;
 
-      //manipulation of the DOM
-
-            document.querySelector('#grade-container').innerHTML += gradeMarkup
-  
-  }
 
 
     // in the scope of the Form Handler
@@ -58,9 +53,9 @@ function getGrades() {
 
       function postGrade(name_of_class, student_grade, student_id) {
         // confirm these values are coming through properly
-        console.log(name_of_class, student_grade, student_id);
-        // build body object
-        let bodyData = {name_of_class, student_grade, student_id}
+
+        const bodyData = {name_of_class, student_grade, student_id}
+
       
         fetch(endPoint, {
           // POST request
@@ -74,8 +69,11 @@ function getGrades() {
           // taking the grade object we get back from teh fetch request and extracting the data
           const gradeData = grade.data
           // render JSON response
-          const gradeMarkup = 
-          render(gradeData)
+          let newGrade = new Grade(gradeData, gradeData.attributes)
+          // render90 brings the unconstructed object and creates a instance of that data
+        
+          document.querySelector('#grade-container').innerHTML += newGrade.renderGradeCard()
+  
         })
       }
 
