@@ -5,11 +5,20 @@ const endPoint = "http://localhost:3000/api/v1/grades";
 document.addEventListener('DOMContentLoaded', () => {
   getGrades()
 
-  // event listner and handler for create syllabus form
-
+  // listen for 'submit' event on form and handle data
 
   const createGradeForm = document.querySelector('#input-container')
   createGradeForm.addEventListener("submit", (e) => createFormHandler(e))
+
+   // listen for 'click' event on grade container
+   const gradeContainer = document.querySelector('#grade-container')
+   gradeContainer.addEventListener('click', e => {
+    const id = parseInt(e.target.dataset.id);
+    const grade = grade.findById(id);
+    console.log(grade);
+  });
+})
+
 
 })
 
@@ -80,6 +89,15 @@ function getGrades() {
       // delete function
 
       function deleteGrade() {
-        let dogId = this
+        let gradeID = this.parentElement.getAttribute('          #grade-container.querySelector('#grade-container').innerHTML += newGrade.renderGradeCard()
+        ')
 
-      }
+        fetch(`http://localhost:3000/api/v1/grades/${gradeId}`, {
+          method: 'DELETE'
+        })
+        .then(resp => resp.json())
+        .then(json => {
+          let selectedGrade = document.querySelector()
+        })
+
+    }

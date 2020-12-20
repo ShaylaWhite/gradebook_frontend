@@ -19,7 +19,15 @@ class Grade {
         <button data-id=${this.id}>delete</button>
     </div>
     <br><br>`;
+
     }
-  }
+    static findById(id) {
+      return this.all.find(grade => grade.id === id);
+    }
+
+    
+
+}
+  
   
   Grade.all = [];
