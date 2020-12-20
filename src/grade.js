@@ -12,11 +12,11 @@ class Grade {
   
     renderGradeCard() {
       return `
-      <div data-id=${grade.id}>
-        <h3>${grade.name_of_class}</h3>
-        <h3>${grade.student_grade}</h3>
-        <p>${grade.student.name}</p>
-        <button data-id=${grade.id}>delete</button>
+      <div data-id=${this.id}>
+        <h3>${this.name_of_class}</h3>
+        <h3>${this.student_grade}</h3>
+        <p>${this.student.name}</p>
+        <button data-id=${this.id}>delete</button>
     </div>
     <br><br>`;
     }
