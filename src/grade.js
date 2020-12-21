@@ -16,18 +16,9 @@ class Grade {
         <h3>${this.name_of_class}</h3>
         <h3>${this.student_grade}</h3>
         <p>${this.student.name}</p>
-        <button data-id=${this.id}>delete</button>
-    </div>
-    <br><br>`;
-
-    }
-    static findById(id) {
-      return this.all.find(grade => grade.id === id);
-    }
-
-    
-
+        </div>
+        <br><br>`;
 }
-  
-  
-  Grade.all = [];
+}
+
+Syllabus.all = [];
