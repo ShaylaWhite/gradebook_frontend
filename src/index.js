@@ -3,20 +3,24 @@ const endPoint = "http://localhost:3000/api/v1/grades";
 document.addEventListener('DOMContentLoaded', () => {
   getSyllabi()
 
-  let createSyllabusForm = document.querySelector('#create-syllabus-form')
+  //find the submit form
+  let createGradeForm = document.querySelector('#create-grade-form')
 
-  // listen for the submit event
-  createSyllabusForm.addEventListener('submit', (e) => createFormHandler(e))
+  // listen for the submit event, 
+  // then attaches the SUBMIT EVENT LISTNER to the form element 
+  createGradeForm.addEventListener('submit', (e) => createFormHandler(e))
 
 })
 
+// GET FETCH , fetches the data 
 function getgrade() {
   fetch(endPoint)
   .then(response => response.json())
   .then(grades => {
     grades.data.forEach(grade => {
-      // double check how your data is nested in the console so you can successfully access the attributes of each individual object
-      const syllabusMarkup = `
+
+      // data is nested, access with the attributes of each individual object
+      const gradeMarkup = `
         <div data-id=${grade.id}>
           <h3>${grade.attributes.name_of_class}</h3>
           <p>${grade.attributes.student_grade}</p>
@@ -25,14 +29,17 @@ function getgrade() {
         </div>
         <br><br>`;
 
-        document.querySelector('#grade-container').innerHTML += syllabusMarkup
+
+        // takes the user input and fills in the grade-container on index.html 
+        document.querySelector('#grade-container').innerHTML += gradeMarkup
     
       })
     })
   }
 
-  //triggered from the user hitiing submit 
-
+  //triggered from the user hitting submit 
+  //FORM HANDLER//
+  // gather all the input values and pass it to the function to execute the post fetch 
   function createFormHandler(e) {
     e.preventDefault()
     const nameInput = document.querySelector('#input-name').value
