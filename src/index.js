@@ -1,7 +1,7 @@
 const endPoint = "http://localhost:3000/api/v1/grades";
 
 document.addEventListener('DOMContentLoaded', () => {
-  getGrades()
+  getGrades();
 
   //find the submit form on the DOM w/ the ID #create-grade-form
   const createGradeForm = document.querySelector("#create-grade-form")
@@ -9,8 +9,15 @@ document.addEventListener('DOMContentLoaded', () => {
   // listen for the submit event, 
   // then attaches the SUBMIT EVENT LISTNER to pass in the event when the submut event listner is triggered 
 
-})
 
+    // deleteButton.addEventListener("click", (e) => deleteGrade());
+
+
+// Added deleteButton event listener
+  const deleteButton = document.querySelector(".delete");
+  deleteButton.addEventListener("click", (e) => deleteGrade())
+
+});
 ////////////////////
   ////GET FUNCTION////
   //////////get fetch request///////////////
@@ -22,12 +29,13 @@ function getGrades() {
     grades.data.forEach(grade => {
       // double check how your data is nested in the console so you can successfully access the attributes of each individual object
       // debugger
-
       const newGrade = new Grade(grade.id, grade.attributes)
-      document.querySelector('#grade-container').innerHTML += newGrade.renderGradeCard()
+      document.querySelector('#grade-container').innerHTML += newGrade.renderGradeCard();
     })
   })
 }
+
+
 
 
   //triggered from the user hitting submit by (e)
@@ -38,7 +46,7 @@ function getGrades() {
     e.preventDefault()
     const nameInput = document.querySelector('#input-name').value
     const gradeInput = document.querySelector('#input-grade').value
-    const studentId = parseInt(document.querySelector('#students').value)
+    const studentId = parseInt(document.querySelector('#students').value);
     //passing in the function postFetch()
     postFetch(nameInput, gradeInput, studentId)
   }
@@ -65,4 +73,22 @@ function getGrades() {
       // render JSON response
     document.querySelector('#grade-container').innerHTML += newGrade.renderGradeCard()
   })
+}
+
+// Added deleteGrade() function
+function deleteGrade() {
+  // let GradeDiv = document.getElementsByClassName("card");
+  // let GradeDiv = e.target;
+  // let gradeDataId = gradeDiv[0].dataset.id;
+  let gradeDataId = event.target.dataset.id;
+  fetch(`http://localhost:3000/api/v1/grades/${gradeDataId}`, {
+    method: "DELETE",
+  })
+    .then((response) => response.json())
+    .then((json) => {
+      let selectedGrade = document.querySelector(
+        `.card[data-id="${gradeDataId}"]`
+      );
+      selectedGrade.remove();
+    });
 }
