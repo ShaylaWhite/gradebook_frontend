@@ -14,8 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // Added deleteButton event listener
-  const deleteButton = document.querySelector(".delete");
-  deleteButton.addEventListener("click", (e) => deleteGrade())
+ // const deleteButton = document.querySelector(".delete");
+ // deleteButton.addEventListener("click", (e) => deleteGrade())
 
 });
 ////////////////////
@@ -27,10 +27,12 @@ function getGrades() {
   .then(response => response.json())
   .then(grades => {
     grades.data.forEach(grade => {
+      //get grades array
+      //over each grade rendering each attribute
       // double check how your data is nested in the console so you can successfully access the attributes of each individual object
-      // debugger
-      const newGrade = new Grade(grade.id, grade.attributes)
-      document.querySelector('#grade-container').innerHTML += newGrade.renderGradeCard();
+      //every time I create a new instance it goes through my constructor 
+      let newGrade = new Grade(grade, grade.attributes)
+      document.querySelector("#grade-container").innerHTML += newGrade.renderGradeCard();
     })
   })
 }
@@ -56,26 +58,24 @@ function getGrades() {
   /////////////////////////
 
   function postFetch(name_of_class, student_grade, student_id) {
-   
-    const bodyData = {name_of_class, student_grade, student_id}
-  
+    const bodyData = { name_of_class, student_grade, student_id };
+    // POST request
     fetch(endPoint, {
-
-      // POST fetch request
       method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(bodyData)
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(bodyData),
     })
-    .then(response => response.json())
-    .then(grade => {
-      
-      const newGrade = new Grade(grade.data.id, grade.data.attributes)
-      // render JSON response
-    document.querySelector('#grade-container').innerHTML += newGrade.renderGradeCard()
-  })
-}
+      .then((response) => response.json())
+      .then((grade) => {
+        console.log(grade)
+        const gradeData = grade.data
+        let newGrade = new Grade(gradeData, gradeData.attributes)
+        // render JSON response
+      document.querySelector('#grade-container').innerHTML += newGrade.renderGradeCard()
+    })
+  }
 
-// Added deleteGrade() function
+// Added deleteGrade() functon
 function deleteGrade() {
   // let GradeDiv = document.getElementsByClassName("card");
   // let GradeDiv = e.target;
