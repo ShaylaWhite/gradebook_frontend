@@ -16,8 +16,8 @@ class Grade {
     return `
     <div data-id="${this.id}" class="card">
     <h3>Name of Class: ${this.name_of_class}</h3>
-              <h3>Grade: ${this.student_grade}</h3>
-              <h2>Student's Name: ${this.student.name}</h2>
+              <h2>Grade: ${this.student_grade}</h2>
+              <h3>Student's Name: ${this.student.name}</h3>
               <button type="submit" onClick="deleteGrade();" data-id="${this.id}" class="delete">Delete</button>
               </div>
             <br><br>`;

@@ -1,0 +1,15 @@
+.formWrapper{
+    display: inline-block;
+    border: 2px solid white;
+    border-radius: 4px;
+
+}
+
+body {
+    text-align: center;
+    background-color: rgb(145, 105, 105);
+}
+
+h1,h2 {
+    color: white;
+}

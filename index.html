@@ -2,6 +2,7 @@
 <html>
 <head>
 <title>Grade</title>
+<link rel="stylesheet" href="styles.css" />
 
 <script  type="text/javascript" src="src/index.js"></script>
 <script  type="text/javascript" src="src/grade.js"></script>
@@ -12,28 +13,28 @@
 
 
 
-<h1>Welcome to GradeBook</h1>
+<h1>WELCOME TO GRADEBOOK!</h1>
 
-<h1>Student's Grades</h1>
+<div class="formWrapper">
 
-
-<div id="grade-container">
-
-  <h1>Student's Grades</h1>
-
-</div>
+<br>
 
 
   <div class="form-container">
 
+
+
     <form id="create-grade-form" style="">
-      <h2>Please Enter The Student Grade!</h2>
-  
-      <h3>Name:</h3>
+      <hr>
+      <hr>
+      <h1>- Enter New Student Grade-</h1>
+      <hr>
+      <hr>   
+      <h3>:Name:</h3>
       <input id='input-name' type="text" name="name" value="" placeholder="Enter your Name of Class:..." class="input-name">
       <br><br>
 
-      <h3>Grade:</h3>
+      <h3>:Grade:</h3>
 
       <select id="input-grade" name="grade">
         <option value="A">A</option>
@@ -43,7 +44,7 @@
         <option value="F">F</option>
       </select>
 
-      <h3>Student Name:</h3>
+      <h3>:Student Name:</h3>
 
       <select id="students" name="students">
         <option value="1">Jess</option>
@@ -57,11 +58,27 @@
       <br><br>
   
       <input id= 'create-button' type="submit" name="submit" value="Create New Grade" class="submit">
+      <br />
+      <button id="sort-grades">Sort Grades</button>
+      <br />
+
+    
     </form>
+   
+    
 
+    <div id="grade-container">
+<hr>
+<hr>
+<h1>-Student Grades-</h1>    
+<hr>
+<hr>    
+</div>
     
     
+    
 
+  </div>
   </div>
 </body>
 
