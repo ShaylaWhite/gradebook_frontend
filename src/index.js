@@ -23,6 +23,31 @@ deleteButton.addEventListener("click", (e) => deleteGrade());
 
 
 });
+
+function sortGrades() {
+  document.querySelector("grade-container").innerHTML = ""
+
+
+  // fecth GET to get grades
+  fetch(endPoint)
+    .then((response) => response.json())
+    .then((grades) => {
+      // sort by name
+      grades.data.sort((a, b) => a - b);
+
+      // console.log(grades.data);
+      grades.data.forEach((grade) => {
+        let newGrade = new Grade(grade, grade.attributes);
+        document.querySelector(
+          "#grade-container"
+        ).innerHTML += newGrade.renderGradeCard();
+      });
+    });
+}
+
+
+
+
 ////////////////////
   ////GET FUNCTION////
   //////////get fetch request///////////////
