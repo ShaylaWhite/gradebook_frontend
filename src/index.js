@@ -16,8 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const sortButton = document.querySelector("#sort-grades");
   sortButton.addEventListener("click", (e) => sortGrades());
 
-const deleteButton = document.querySelector(".delete")
-deleteButton.addEventListener("click", (e) => deleteGrade());
+
 
 
 
@@ -25,7 +24,7 @@ deleteButton.addEventListener("click", (e) => deleteGrade());
 });
 
 function sortGrades() {
-  document.querySelector("grade-container").innerHTML = ""
+  document.querySelector("grade-container").innerHTML = "";
 
 
   // fecth GET to get grades
@@ -33,9 +32,22 @@ function sortGrades() {
     .then((response) => response.json())
     .then((grades) => {
       // sort by name
-      grades.data.sort((a, b) => a - b);
 
-      // console.log(grades.data);
+      grades.data.sort(function (a, b) {
+        if (a[0] < b[0]) {
+          return -1;
+      }
+      if (b[0] > a[0]) {
+          return 1;
+      }
+      if(a[0] === b[0]) {
+          if(a[1] && a[1] === "+") {
+              return -1;
+          }
+      }
+      return 0;
+  });
+    
       grades.data.forEach((grade) => {
         let newGrade = new Grade(grade, grade.attributes);
         document.querySelector(
@@ -56,6 +68,22 @@ function getGrades() {
   fetch(endPoint)
   .then(response => response.json())
   .then(grades => {
+  // sort 
+     grades.data.sort(function (a, b) {
+        var nameA = a.attributes.name_of_class.toUpperCase(); // ignore upper and lowercase
+        var nameB = b.attributes.name_of_class.toUpperCase(); // ignore upper and lowercase
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+
+        // names must be equal
+        return 0;
+      });
+      console.log(grades.data);
+
     grades.data.forEach(grade => {
       //get grades array
       //access the attributes of each individual object 
