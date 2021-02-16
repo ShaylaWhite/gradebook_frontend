@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css\bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
 <script  type="text/javascript" src="src/index.js"></script>
 <script  type="text/javascript" src="src/grade.js"></script>
 </head>
@@ -18,28 +18,22 @@
 
 
 <div class="jumbotron jumbotron-fluid">
-  <div class="container">
     <h1 class="display-4">Welcome to GradeBook</h1>
-    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-
+    <p class="lead">Gradebook was created for teachers and instructors to help them maintain their grades virtually.</p>
+</div>
 <br>
-
-
-  <div class="form-container">
-
-
-
+  <div class="container">
     <form id="create-grade-form" style="">
       <hr>
       <hr>
-      <h1>- Enter New Student Grade-</h1>
+      <h1 class="display-4">Enter The Students Grade</h1>
       <hr>
       <hr>   
-      <h3>:Name:</h3>
+      <h1 class="display-4">Name of Class</h1>
       <input id='input-name' type="text" name="name" value="" placeholder="Enter your Name of Class:..." class="input-name">
       <br><br>
 
-      <h3>:Grade:</h3>
+      <h1 class="display-4">Select Grade</h1>
 
       <select id="input-grade" name="grade">
         <option value="A">A</option>
@@ -49,7 +43,7 @@
         <option value="F">F</option>
       </select>
 
-      <h3>:Student Name:</h3>
+      <h1 class="display-4">Select Student</h1>
 
       <select id="students" name="students">
         <option value="1">Jess</option>
@@ -75,7 +69,7 @@
     <div id="grade-container">
 <hr>
 <hr>
-<h1>-Student Grades-</h1>    
+<h1 class="display-4">Student's Grades</h1>
 <hr>
 <hr>    
 </div>
