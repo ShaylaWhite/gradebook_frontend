@@ -155,3 +155,23 @@ function deleteGrade() {
       selectedGrade.remove();
     });
 }
+
+
+
+// CALLBACK FUNCTION
+let sortFuction = (elementOne, elementTwo) => {
+  var nameA = a.attributes.name_of_class.toUpperCase(); // ignore upper and lowercase
+  var nameB = b.attributes.name_of_class.toUpperCase(); // ignore upper and lowercase
+  if (nameA < nameB) {
+    return -1;
+  }
+  if (nameA > nameB) {
+    return 1;
+  }
+
+  // names must be equal
+  return 0;
+} 
+
+//HIGHER ORDER FUNCTION
+//grades.data.sort(sortFunction(a,b));

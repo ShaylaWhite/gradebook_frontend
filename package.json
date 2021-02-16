@@ -1,0 +1,21 @@
+{
+  "name": "gradebook_frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShaylaWhite/gradebook_frontend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ShaylaWhite/gradebook_frontend/issues"
+  },
+  "homepage": "https://github.com/ShaylaWhite/gradebook_frontend#readme"
+}
