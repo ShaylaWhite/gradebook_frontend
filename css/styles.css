@@ -1,3 +1,8 @@
+
+* {
+    font-family: 'Playfair Display SC', serif;
+
+}
 .jumbotron {
     display: inline-block;
     border: 2px solid black;
@@ -7,9 +12,18 @@
 
 body {
     text-align: center;
-    background-color: grey;
+    background-color: whitesmoke;
 }
 
 h1,h2 {
     color: black;
 }
+
+.display-4 {
+    font-size: 75px;
+    color: #000000;
+    border-bottom: 3px solid #grey;
+    font-family: 'Playfair Display SC', serif;
+
+}
+
