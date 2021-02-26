@@ -8,7 +8,7 @@ Welcome to the Gradebook app!! Read Installation instructions!
 
 Installation
 
-View the Gradebook Backend API:
+View the Gradebook Backend API
 
 https://github.com/ShaylaWhite/gradebook
 
